@@ -9,11 +9,12 @@ const cors = require('cors');
 const usersRouter = require('./routes/users');
 const chatsRouter = require('./routes/chats');
 const messagesRouter = require('./routes/messages');
+require("dotenv").config()
 
 main().catch(err => console.log(err));
 
 async function main() {
-  await mongoose.connect('mongodb://localhost:27017/elegram_database');
+  await mongoose.connect(process.env.MONGODB_URL);
 }
 
 const app = express();
